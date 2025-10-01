@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5" style="min-height:70vh;">
+  <div class="row justify-content-center align-items-center" style="height:60vh;">
+    <div class="col-10 col-md-8"
+         style="background-color:#f0f0f0; border:2px solid #b0b0b0; border-radius:10px; width:80%; margin:auto; padding:40px;">
+      <div class="text-center">
+        <h1 class="display-3 fw-bold">Siz profilingizga kirmagansiz!</h1><br><br>
+        <p>Shaxsiy profilingizga kiring yoki profilingiz yo'q bo'lsa ro'yhatdan o'ting</p><br>
+        <hr>
+        <a href="{% url 'login' %}"><button type="submit" class="btn btn-outline-primary">Kirish</button></a>
+        <a href="{% url 'signup' %}"><button type="submit" class="btn btn-outline-success">Ro'yhatdan o'tish</button></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

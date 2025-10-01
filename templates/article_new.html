@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Yangi post</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!--        {{ form.media }}-->
+    {{ form.crispy }}
+    <img id="preview" src="#" alt="Rasm tanlang" style="max-width:200px; display:none;">
+    <button type="submit">Saqlash</button>
+</form>
+<script>
+    document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = document.getElementById('preview');
+                img.src = event.target.result;
+                img.style.display = "block";
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+{% endblock content %}
+
+

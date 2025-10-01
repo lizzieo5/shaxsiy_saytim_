@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-4">
+    <div>
+        {% for article in object_list %}
+            <div class="card mb-4 shadow-lg" style="max-width: 1200px; padding: 25px;">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <img src="{{ article.photo.url }}" alt="{{ article.title }}" class="img-fluid rounded-start">
+                    </div>
+                    <div class="col-md-7 d-flex align-items-center">
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+                            <span class="card-text"
+                                  style="display: block;
+                                         font-family: 'Georgia', serif;
+                                         font-style: italic;
+                                         font-size: 22px;">
+                                {{ article.summary }}... <a href="{% url 'article_detail' article.pk %}">Batafsil</a>
+                            </span>
+                            <p class="card-text mt-2" style="font-size: 18px;">{{ article.body|truncatewords:15 }}</p>
+                            <p class="card-text">
+                                <small class="text-muted" style="font-size: 14px;">
+                                    muallif: {{ article.author }}. {{ article.date }}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
