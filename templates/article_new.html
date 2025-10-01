@@ -2,29 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>Yangi post</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <!--        {{ form.media }}-->
-    {{ form.crispy }}
-    <img id="preview" src="#" alt="Rasm tanlang" style="max-width:200px; display:none;">
-    <button type="submit">Saqlash</button>
-</form>
-<script>
-    document.querySelector('input[type="file"]').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = document.getElementById('preview');
-                img.src = event.target.result;
-                img.style.display = "block";
-            }
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow border-0 p-4">
+        <h2 class="mb-4 text-center">📝 Yangi post qo‘shish</h2>
 
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            {{ from.media }}
+          {{ form|crispy }}
+
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-success px-4">
+              Saqlash
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
-
-
